@@ -58,7 +58,7 @@ If you're nesting dialogs and this is set to true, the parent dialog will be rel
 
 For the metadata plugin:  "Specify the expected locations of metadata for the element. Possible values are 'class': search in the class attribute, 'elem': search for an element inside the element being searched, and 'attr': search in a custom attribute on the element."  Defaults to "class"
 
-> metadataName:
+> metadataName
 
 For the metadata plugin: "When type is 'attr', specify the name of the custom attribute for which to search. When type is 'elem', specify the tag name of the element for which to search."  Defaults to "metadata"
 
