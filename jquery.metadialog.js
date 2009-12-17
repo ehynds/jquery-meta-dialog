@@ -63,7 +63,9 @@
 					$this.remove();
 
 					// reload data into the parent if the parent is still open.
-					if($parent.dialog('isOpen')) $parent.load(href, extraParams, settings.loadCallback);
+					if($parent.dialog('isOpen')){
+						$parent.load(href, extraParams, settings.loadCallback);
+					}
 				});
 			};
 			
