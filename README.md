@@ -1,10 +1,12 @@
 # jQuery Meta Dialog Plugin
 
+Examples @ [http://www.erichynds.com/examples/jquery-meta-dialog/](http://www.erichynds.com/examples/jquery-meta-dialog/)  
+
 This plugin allows you to open a jQuery UI dialog window on the fly using anchor links. The dialog options can be set using metadata, and the URI in the anchor's
 HREF attribute will automatically load into the dialog.  Options set when the plugin is initialized (see step 1) will be used if not overwritten in the
 links metadata.  Also supports nested dialogs, with the option to reload the parent dialog when the child is closed.
 
-Requires jQuery UI and the metadata plugin @ http://plugins.jquery.com/project/metadata
+Requires jQuery UI and the metadata plugin @ [http://plugins.jquery.com/project/metadata](http://plugins.jquery.com/project/metadata)
 
 #### Step 1: bind the plugin
 
@@ -36,7 +38,7 @@ Every option available to the dialog can be set using metadata, so it is possibl
 
 > jQuery UI dialog options
 
-Set any of these options: http://jqueryui.com/demos/dialog/#options
+Set any of these options: [http://jqueryui.com/demos/dialog/#options](http://jqueryui.com/demos/dialog/#options)
 
 > extraParams
 
