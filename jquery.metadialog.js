@@ -1,5 +1,5 @@
 /*
- * jQuery meta dialog plug-in 0.1
+ * jQuery meta dialog plug-in 1.0
  *
  * http://www.erichynds.com
  *
@@ -41,7 +41,7 @@
 			var dialogID = 'metadialog-dialog-' + (new Date).getTime();
 
 			// create, load, and open the dialog
-			var thisdialog = $('<div class="metadialog-dialog" id="'+ dialogID +'">' + settings.loadingHTML + '</div>')
+			var $thisdialog = $('<div class="metadialog-dialog" id="'+ dialogID +'">' + settings.loadingHTML + '</div>')
 			.appendTo("body")
 			.load(this.href, settings.extraParams, settings.loadCallback)
 			.dialog(settings)
@@ -52,7 +52,7 @@
 			if(settings.reloadParent && parent !== undefined){
 				
 				// bind to this dialog's close event
-				thisdialog.bind('dialogclose', function(){
+				$thisdialog.bind('dialogclose', function(){
 					var $this = $(this),
 					    $parent = $('#' + parent),
 					    postdata = $parent.data('postdata'),
