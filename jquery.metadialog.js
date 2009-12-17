@@ -1,5 +1,5 @@
 /*
- * jQuery anchor dialog plug-in 0.1
+ * jQuery meta dialog plug-in 0.1
  *
  * http://www.erichynds.com
  *
@@ -12,10 +12,10 @@
  */
  
 (function($){
-	$.fn.anchordialog = function(options){
+	$.fn.metadialog = function(options){
 
 		// default options
-		$.fn.anchordialog.defaults = {
+		$.fn.metadialog.defaults = {
 			extraParams: {},
 			loadingHTML: 'Loading...',
 			loadCallback: function(){},
@@ -25,23 +25,23 @@
 		};
 	
 		// merge this plugin's defaults with the dialogs defaults
-		var opts = $.extend({}, $.ui.dialog.defaults, $.fn.anchordialog.defaults, options);
+		var opts = $.extend({}, $.ui.dialog.defaults, $.fn.metadialog.defaults, options);
 
 		// on the click event of each matched item... live() for nested dialogs
 		return this.live('click', function(e){
 			$this = $(this);
 			
 			// the ID of the dialog window that opened this one, if applicable.
-			var parent = $this.parents(".anchordialog-dialog").attr('id') || undefined;
+			var parent = $this.parents(".metadialog-dialog").attr('id') || undefined;
 			
 			// override this instance's options with attribute meta data
 			var settings = $.metadata ? $.extend({}, opts, $this.metadata({ type:opts.metadataType, name:opts.metadataName }) ) : opts;
 			
 			// create a unique ID for this dialog
-			var dialogID = 'anchordialog-dialog-' + (new Date).getTime();
+			var dialogID = 'metadialog-dialog-' + (new Date).getTime();
 
 			// create, load, and open the dialog
-			var thisdialog = $('<div class="anchordialog-dialog" id="'+ dialogID +'">' + settings.loadingHTML + '</div>')
+			var thisdialog = $('<div class="metadialog-dialog" id="'+ dialogID +'">' + settings.loadingHTML + '</div>')
 			.appendTo("body")
 			.load(this.href, settings.extraParams, settings.loadCallback)
 			.dialog(settings)
