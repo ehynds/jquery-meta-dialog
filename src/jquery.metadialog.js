@@ -29,19 +29,19 @@
 
 		// on the click event of each matched item... live() for nested dialogs
 		return this.live('click', function(e){
-			$this = $(this);
+			var $this = $(this),
 			
 			// the ID of the dialog window that opened this one, if applicable.
-			var parent = $this.parents(".metadialog-dialog").attr('id') || undefined;
+			parent = $this.parents(".metadialog-dialog").attr('id') || undefined,
 			
 			// override this instance's options with attribute meta data
-			var settings = $.metadata ? $.extend({}, opts, $this.metadata({ type:opts.metadataType, name:opts.metadataName }) ) : opts;
+			settings = $.metadata ? $.extend({}, opts, $this.metadata({ type:opts.metadataType, name:opts.metadataName }) ) : opts,
 			
 			// create a unique ID for this dialog
-			var dialogID = 'metadialog-dialog-' + (new Date).getTime();
+			dialogID = 'metadialog-dialog-' + (new Date).getTime(),
 
 			// create, load, and open the dialog
-			var $thisdialog = $('<div class="metadialog-dialog" id="'+ dialogID +'">' + settings.loadingHTML + '</div>')
+			$thisdialog = $('<div class="metadialog-dialog" id="'+ dialogID +'">' + settings.loadingHTML + '</div>')
 			.appendTo("body")
 			.load(this.href, settings.extraParams, settings.loadCallback)
 			.dialog(settings)
