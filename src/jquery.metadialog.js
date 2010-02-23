@@ -1,5 +1,5 @@
 /*
- * jQuery Meta Dialog Plugin 1.0
+ * jQuery Meta Dialog Plugin 1.1
  *
  * http://www.erichynds.com
  *
