@@ -1,5 +1,5 @@
 /*
- * jQuery Meta Dialog Plugin 1.1
+ * jQuery Meta Dialog Plugin 1.2
  *
  * http://www.erichynds.com
  *
@@ -14,22 +14,28 @@
 	$.fn.metadialog = function(options){
 	
 		// merge this plugin's defaults with the dialogs defaults
-		var opts = $.extend({}, $.ui.dialog.defaults, $.fn.metadialog.defaults, options);
-
+		var opts = $.extend({}, $.ui.dialog.defaults, $.fn.metadialog.defaults, options),
+			guid = 0;
+	
 		return this.live("click", function(e){
 			var $this = $(this),
-			
+
 			// the dialog window that opened this one
 			$parent = $this.closest("div.metadialog-dialog"),
 		
 			// override this instance's options with attribute meta data
-			settings = $.metadata ? $.extend({}, opts, $this.metadata({ type:opts.metadataType, name:opts.metadataName }) ) : opts,
-		
+			settings = $.extend({}, opts, $.metadata 
+				? $this.metadata({ type:opts.metadataType, name:opts.metadataName })
+				
+				// if metadata plugin isn't present, merge in JSON from data-metadialog attr.
+				: (new Function("return " + (this.getAttribute("data-metadialog") || "{}") ))()
+			),
+			
 			// create a unique ID for this dialog
-			dialogID = 'metadialog-dialog-' + (new Date).getTime(),
+			dialogID = 'metadialog-dialog-'+(++guid),
 
 			// create, load, and open the dialog
-			$thisdialog = $('<div class="metadialog-dialog" id="'+ dialogID +'">' + settings.loadingHTML + '</div>')
+			$thisdialog = $('<div class="metadialog-dialog" id="'+dialogID+'">' + settings.loadingHTML + '</div>')
 			.appendTo("body")
 			.load(this.href, settings.extraParams, settings.loadCallback)
 			.dialog(settings)
